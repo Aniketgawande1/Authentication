@@ -164,12 +164,18 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
 // Initialize Express app
 const app = express();
 
 // Middleware
+app.use(cors({
+    origin: 'http://localhost:5173', // Your React app's URL
+    credentials: true
+  }));
+  
 app.use(express.json());
 app.use(cookieParser());
 
